@@ -9,6 +9,8 @@ import { createStackNavigator } from "react-navigation-stack";
 import Home from "./HomeComponent";
 import Videos from "./VideoComponent";
 import VideoInfo from "./VideoInfoComponent";
+import Photos from "./PhotosComponent";
+import PhotoInfo from "./PhotoInfoComponent";
 
 const HomeNavigator = createStackNavigator(
     {
@@ -50,6 +52,31 @@ const VideosNavigator = createStackNavigator(
             },
             headerLeft: <Icon
                 name='video-camera'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+
+const PhotosNavigator = createStackNavigator(
+    {
+        Photos: { screen: Photos },
+        PhotoInfo: { screen: PhotoInfo }
+    },
+    {
+        initialRouteName: 'Photos',
+        defaultNavigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#fff'
+            },
+            headerTintColor: '#000',
+            headerTitleStyle: {
+                color: '#000'
+            },
+            headerLeft: <Icon
+                name='camera'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -104,6 +131,19 @@ const MainNavigator = createDrawerNavigator(
                     /> 
                 )
             }
+        },
+        Photos: { 
+            screen: PhotosNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon 
+                        name='camera'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    /> 
+                )
+            }
         }
     },
     {
@@ -143,8 +183,9 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     },
     drawerImage: {
-        height: 100,
-        width: 100
+        height: 200,
+        width: 200,
+        resizeMode: 'contain'
     },
     stackIcon: {
         marginLeft: 10,

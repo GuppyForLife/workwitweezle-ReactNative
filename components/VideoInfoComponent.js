@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicatorBase, StyleSheet, Text, View } from 'react-native';
-import { Card } from 'react-native-elements';
+import {  StyleSheet, Text, View } from 'react-native';
 import { VIDEOS } from '../shared/videos';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
@@ -14,7 +13,7 @@ function RenderVideo({video}) {
                 </Text>
                 <View style={styles.video}>
                     <YoutubePlayer
-                        height={400}
+                        height={200}
                         play={false}
                         videoId={video.source}
                     />
