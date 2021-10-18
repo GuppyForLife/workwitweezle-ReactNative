@@ -12,6 +12,7 @@ import VideoInfo from "./VideoInfoComponent";
 import Photos from "./PhotosComponent";
 import PhotoInfo from "./PhotoInfoComponent";
 import PromoVisuals from "./PromoVisuals";
+import Contact from "./ContactComponent";
 
 const HomeNavigator = createStackNavigator(
     {
@@ -20,7 +21,7 @@ const HomeNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#fff'
+                backgroundColor: '#B6B6B9'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
@@ -45,7 +46,7 @@ const VideosNavigator = createStackNavigator(
         initialRouteName: 'Videos',
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#fff'
+                backgroundColor: '#B6B6B9'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
@@ -70,7 +71,7 @@ const PhotosNavigator = createStackNavigator(
         initialRouteName: 'Photos',
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#fff'
+                backgroundColor: '#B6B6B9'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
@@ -93,7 +94,7 @@ const PromoNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#fff'
+                backgroundColor: '#B6B6B9'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
@@ -101,6 +102,29 @@ const PromoNavigator = createStackNavigator(
             },
             headerLeft: <Icon
                 name='video-camera'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+
+const ContactNavigator = createStackNavigator(
+    {
+        Contact: { screen: Contact }
+    },
+    {
+        defaultNavigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#B6B6B9'
+            },
+            headerTintColor: '#000',
+            headerTitleStyle: {
+                color: '#000'
+            },
+            headerLeft: <Icon
+                name='address-book'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -181,10 +205,23 @@ const MainNavigator = createDrawerNavigator(
                     /> 
                 )
             }
+        },
+        Contact: { 
+            screen: ContactNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon 
+                        name='address-book'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    /> 
+                )
+            }
         }
     },
     {
-        drawerBackgroundColor: '#FFF',
+        drawerBackgroundColor: '#B6B6B9',
         contentComponent: CustomerDrawerContentComponent
     }
 );
@@ -212,7 +249,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     drawerHeader: {
-        backgroundColor: '#fff',
+        backgroundColor: '#B6B6B9',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
