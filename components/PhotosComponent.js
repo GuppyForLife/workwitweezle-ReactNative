@@ -21,7 +21,7 @@ class Photos extends Component {
         const RenderPhotoCards = () => {
             return this.state.photos.map((photo) => {
                 return (
-                    <View style={styles.container}>
+                    <View key={photo.id} style={styles.container}>
                         <View style={styles.card_template}>
                             <TouchableOpacity onPress={() => navigate('PhotoInfo', { photoId: photo.id})}>
                                 <Image 

@@ -21,7 +21,7 @@ class Videos extends Component {
         const RenderVideoCards = () => {
             return this.state.videos.map((video) => {
                 return (
-                    <View style={styles.container}>
+                    <View key={video.id} style={styles.container}>
                         <View style={styles.card_template}>
                             <TouchableOpacity onPress={() => navigate('VideoInfo', { videoId: video.id})}>
                                 <Image 

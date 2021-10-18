@@ -11,6 +11,7 @@ import Videos from "./VideoComponent";
 import VideoInfo from "./VideoInfoComponent";
 import Photos from "./PhotosComponent";
 import PhotoInfo from "./PhotoInfoComponent";
+import PromoVisuals from "./PromoVisuals";
 
 const HomeNavigator = createStackNavigator(
     {
@@ -51,7 +52,7 @@ const VideosNavigator = createStackNavigator(
                 color: '#000'
             },
             headerLeft: <Icon
-                name='video-camera'
+                name='play'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -77,6 +78,29 @@ const PhotosNavigator = createStackNavigator(
             },
             headerLeft: <Icon
                 name='camera'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+
+const PromoNavigator = createStackNavigator(
+    {
+        PromoVisuals: { screen: PromoVisuals }
+    },
+    {
+        defaultNavigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#fff'
+            },
+            headerTintColor: '#000',
+            headerTitleStyle: {
+                color: '#000'
+            },
+            headerLeft: <Icon
+                name='video-camera'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -124,7 +148,7 @@ const MainNavigator = createDrawerNavigator(
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon 
-                        name='video-camera'
+                        name='play'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
@@ -138,6 +162,19 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon 
                         name='camera'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    /> 
+                )
+            }
+        },
+        PromoVisuals: { 
+            screen: PromoNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon 
+                        name='video-camera'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
